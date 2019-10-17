@@ -1,0 +1,47 @@
+ul {
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0;
+  background-color: darkblue;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+}
+
+li a,
+.dropbtn {
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+  text-align: center;
+  padding: 15px 15px;
+}
+
+li a:hover,
+.dropdown:hover .dropbtn {
+  background-color: rgb(1, 71, 94);
+}
+
+.dropdown-content {
+  display: none;
+  min-width: 160px;
+  position: absolute;
+  background-color: rgba(0, 0, 50, 0.2);
+  box-shadow: 0px 16px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content a {
+  color: darkcyan;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: gainsboro;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}

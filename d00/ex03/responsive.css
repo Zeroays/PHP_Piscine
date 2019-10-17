@@ -1,0 +1,78 @@
+img {
+  display: block;
+  margin: auto;
+  width: 7.5%;
+  height: 10%;
+}
+
+h1 {
+  text-align: center;
+  font-size: 1vw;
+  color: rebeccapurple;
+}
+
+.element {
+  text-align: center;
+}
+
+.number {
+  font-size: 1%;
+  text-align: left;
+}
+
+.atomic-weight {
+  font-size: 1%;
+  text-align: right;
+}
+
+table {
+  margin: 0 auto;
+}
+
+td {
+  width: 2vw;
+  height: 0.3vw;
+}
+
+.element {
+  font-size: 0.5vw;
+}
+
+.number {
+  font-size: 0.3vw;
+}
+
+.atomic-weight {
+  font-size: 0.3vw;
+}
+
+#alkali-metal {
+  background: red;
+}
+#alkaline-earth-metal {
+  background: peachpuff;
+}
+#lanthanide {
+  background: pink;
+}
+#actinide {
+  background: plum;
+}
+#transition-metal {
+  background: palevioletred;
+}
+#post-transition-metal {
+  background: grey;
+}
+#metalloid {
+  background: darkolivegreen;
+}
+#non-metal {
+  background: lightgrey;
+}
+#reactive-nonmetal {
+  background: yellow;
+}
+#noble-gas {
+  background: cornflowerblue;
+}

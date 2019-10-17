@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Balloon</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        .balloon {
+            background-color : #FF0000;
+            width : 200px;
+            height : 200px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="balloon"></div>
+    
+    <script>
+        var colors = ["#FF0000", "#00FF00", "#0000FF"];
+        var currentColor = 0;
+        var forward = true;
+        var ogWidth = $(".balloon").width();
+        var ogHeight = $(".balloon").height();
+
+        $(document).ready(function() {
+            function sizeChange(width, height, num) {
+                $(".balloon").width(width + num);
+                $(".balloon").height(height + num);
+            }
+            function colorChange(direction) {
+                if (direction == true)
+                    (currentColor < colors.length - 1) ? currentColor += 1 : currentColor = 0;
+                else
+                    (currentColor > 0) ? currentColor -= 1 : currentColor = colors.length - 1;
+                $(".balloon").css("background-color", colors[currentColor]);
+            }
+            function blowUp() {
+                if ($(".balloon").width() <= 410)
+                    sizeChange($(".balloon").width(), $(".balloon").height(), 10);
+                else
+                    sizeChange(ogWidth, ogHeight, 0);
+                colorChange(forward);
+            }
+            function shrink() {
+                if ($(".balloon").width() - 5 >= 200)
+                    sizeChange($(".balloon").width(), $(".balloon").height(), -5);
+                forward = !(forward);
+            }
+            $(".balloon").on('click', function() {blowUp();});
+            $(".balloon").on('mouseleave', function() {shrink();});
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>It's over 9000</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+        .calculator {
+            background-color : grey;
+            margin : 0 auto;
+            text-align: center;
+            width : 50%;
+            height : 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="num1">
+        <select name="options" id="operations">
+            <option value="add">+</option>
+            <option value="subtract">-</option>
+            <option value="divide">/</option>
+            <option value="multiply">*</option>
+            <option value="modulus">%</option>
+        </select>
+        <input type="text" id="num2">
+        <div>
+            <input type="submit" value="Try me!">
+        </div>
+    </div>
+    <script>
+        var operations = {
+                '+' : function (num1, num2) {return (num1 + num2)},
+                '-' : function (num1, num2) {return (num1 - num2)},
+                '/' : function (num1, num2) {return (num1 / num2)},
+                '*' : function (num1, num2) {return (num1 * num2)},
+                '%' : function (num1, num2) {return (num1 % num2)}
+        }
+        $(document).ready(function() {
+            function inputCheck(num1, num2, operation) {
+                if (!($.isNumeric(num1)) || !($.isNumeric(num2)) || num1 < 0 || num2 < 0) {
+                    alert("Error :(");
+                    return false;
+                } else if (parseInt(num2) === 0 && (operation == '%' || operation == '/')) {
+                    alert("It's over 9000!");
+					console.log("It's over 9000!");
+                    return false;
+                }
+                return (true);
+            }
+            function calculate() {
+                var num1 = $("#num1").val();
+                var num2 = $("#num2").val();
+                var sel = $("select");
+                var op = sel.children("option:selected").text();
+                if (inputCheck(num1, num2, op)) {
+                    alert(operations[op](parseInt(num1), parseInt(num2)));
+                    console.log(operations[op](parseInt(num1), parseInt(num2)));
+                }
+            }
+            $(":submit").on('click', function() {calculate();});
+            setInterval(function(){ alert("Please, use me...");}, 30000);
+        });
+    </script>
+</body>
+</html>

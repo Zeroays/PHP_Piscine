@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Balloon</title>
+    <style>
+        .balloon {
+            background-color : #FF0000;
+            width : 200px;
+            height : 200px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="balloon" onclick="blowUp()" onmouseleave="shrink()"></div>
+    <script>
+        var colors = ["#FF0000", "#00FF00", "#0000FF"];
+        var currentColor = 0;
+        var forward = true;
+        var balloon = document.querySelector(".balloon");
+        var ogWidth = balloon.clientWidth;
+        var ogHeight = balloon.clientHeight;
+
+        function sizeChange(width, height, change) {
+            balloon.style.width = width + change + "px";
+            balloon.style.height = height + change + "px";
+        }
+        function colorChange(direction) {
+            if (direction == true)
+                (currentColor < colors.length - 1) ? currentColor += 1 : currentColor = 0;
+            else
+                (currentColor > 0) ? currentColor -= 1 : currentColor = colors.length - 1;
+            balloon.style.backgroundColor = colors[currentColor];
+        }
+        function blowUp() {
+            if (balloon.clientWidth <= 410)
+                sizeChange(balloon.clientWidth, balloon.clientHeight, 10);
+            else 
+                sizeChange(ogWidth, ogHeight, 0);
+            colorChange(forward);
+        }
+        function shrink() {
+            if (balloon.clientWidth - 5 >= 200)
+                sizeChange(balloon.clientWidth, balloon.clientHeight, -5);
+            forward = !(forward);
+        }
+    </script>
+</body>
+</html>
